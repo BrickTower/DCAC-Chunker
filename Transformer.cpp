@@ -16,6 +16,18 @@ vector<string> process(string input)
     for (int i = 0; i < n; i++)
     {
 
+        
+        if (input[i] == ' ' or i == (n - 1) or input[i] == '.' or input[i] == '!' or input[i] == '?')
+        {
+            output += "\n"; // END THE LINE
+            response.push_back(output);
+            output = ""; // RESET
+        }
+        else
+        {
+            output += input[i];
+        }
+
         if (input[i] == '\n')
         {
             if (input[i - 1] == '\n')
@@ -31,16 +43,6 @@ vector<string> process(string input)
                 response.push_back(output);
                 output = ""; // RESET
             }
-        }
-        else if (input[i] == ' ' or i == (n - 1) or input[i] == '.' or input[i] == '!' or input[i] == '?')
-        {
-            output += "\n"; // END THE LINE
-            response.push_back(output);
-            output = ""; // RESET
-        }
-        else
-        {
-            output += input[i];
         }
     }
 
