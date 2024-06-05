@@ -16,24 +16,37 @@ vector<string> process(string input)
     for (int i = 0; i < n; i++)
     {
 
-        if (input[i] == '\n')
+        if (input[i + 1] == '\n')
         {
             if (input[i - 1] == '\n')
             {
-                output += "";
                 input.erase(input[i]);
                 response.push_back(output);
                 output = "";
             }
             else
             {
-                output += ""; // END THE LINE
                 response.push_back(output);
                 output = ""; // RESET
             }
         }
-        else if (input[i] == ' ' or i == (n - 1) or input[i] == '.' or input[i] == '!' or input[i] == '?')
+        else if (input[i] == ' ' or i == (n - 1))
         {
+            if (input[i + 1] == ' ')
+            {
+                response.pop_back();
+            }
+
+            if (i == (n - 1))
+            {
+                output += input[i];
+            }
+
+            output += "\n"; // END THE LINE
+            response.push_back(output);
+            output = ""; // RESET
+        }
+        else if (input[i] == '.' and input[i+1] != ' ') {
             output += input[i];
             output += "\n"; // END THE LINE
             response.push_back(output);
@@ -67,7 +80,7 @@ int main()
     ofstream myFile(fileOutput);
     for (int i = 0; i <= 860; i++)
     {
-        str += "Lorem Ipsum.\n\nLorem Ipsum."; // INPUT
+        str += "I pride myself and think of myself as a man of faith, as there's a drive into deep left field by Castellanos, it will be a home run. And so that'll make it a 4–0 ballgame."; // INPUT
     }
 
     vector<string> arr;
