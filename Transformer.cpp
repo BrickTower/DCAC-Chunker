@@ -46,7 +46,8 @@ vector<string> process(string input)
             response.push_back(output);
             output = ""; // RESET
         }
-        else if (input[i] == '.' and input[i+1] != ' ') {
+        else if (input[i] == '.' and input[i + 1] != ' ')
+        {
             output += input[i];
             output += "\n"; // END THE LINE
             response.push_back(output);
@@ -83,19 +84,19 @@ int main()
         str += "I pride myself and think of myself as a man of faith, as there's a drive into deep left field by Castellanos, it will be a home run. And so that'll make it a 4–0 ballgame."; // INPUT
     }
 
-    vector<string> arr;
+    vector<string> vec;
 
-    arr = process(str);
+    vec = process(str);
 
-    for (int i = 0; i < arr.size(); i++)
+    for (int i = 0; i < vec.size(); i++)
     {
-        cout << i << ": " << arr[i] << endl;
+        cout << i << ": " << vec[i] << endl;
     }
 
     vector<string> backup; // BACKUP THE ARRAY
-    backup = arr;
+    backup = vec;
 
-    if (arr.size() > 850)
+    if (vec.size() > 850)
     {
 
         ofstream backupFile("backupFile.txt");
@@ -106,20 +107,27 @@ int main()
 
         backupFile.close();
 
-        int size = (arr.size() - 850); // POP OUT ANY DATA
+        int size = (vec.size() - 850); // POP OUT ANY DATA
         for (int i = 0; i < size; i++)
         {
-            arr.pop_back();
+            vec.pop_back();
         }
     }
 
-    ostream_iterator<string> outputIterator(myFile, "");
-    copy(begin(arr), end(arr), outputIterator);
-
-    if (arr.size() > 850)
+    for (int i = 0; i <= 50; i++)
     {
-        cout << "Too Large!" << endl;
+        string currentWord = vec[vec.size() - i];
+        cout << "CurrentWord: " << currentWord << "Last Letter: " << currentWord[currentWord.size() - 2] << endl;
+
+        if (currentWord[currentWord.size() - 2] == '.')
+        {
+            cout << "Period found in element #" << i << endl;
+        }
     }
+
+
+    ostream_iterator<string> outputIterator(myFile, "");
+    copy(begin(vec), end(vec), outputIterator);
 
     myFile.close();
 
