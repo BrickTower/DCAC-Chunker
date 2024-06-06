@@ -114,6 +114,7 @@ int main()
         }
     }
 
+    int breakPoint = -1;
     for (int i = 0; i <= 50; i++)
     {
         string currentWord = vec[vec.size() - i];
@@ -122,10 +123,26 @@ int main()
         if (currentWord[currentWord.size() - 2] == '.')
         {
             cout << "Period found in element #" << i << endl;
+            breakPoint = i - 2;
         }
     }
 
+    if (breakPoint == -1) // IF NO PERIODS FOUND, LOOK FOR
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            string currentWord = vec[vec.size() - i];
+            cout << "CurrentWord: " << currentWord << "Last Letter: " << currentWord[currentWord.size() - 2] << endl;
 
+            if (currentWord[currentWord.size() - 2] == '?' or currentWord[currentWord.size() - 2] == '!' or currentWord[currentWord.size()-2] == '\n')
+            {
+                cout << "Target found in element #" << i << endl;
+                breakPoint = i - 2;
+            }
+        }
+    }
+
+    cout << breakPoint << endl;
     ostream_iterator<string> outputIterator(myFile, "");
     copy(begin(vec), end(vec), outputIterator);
 
