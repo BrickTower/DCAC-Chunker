@@ -59,24 +59,14 @@ vector<string> process(string input)
         }
     }
 
-    // for (vector<string>::iterator i = response.begin(); i != response.end();)
-    // {
-    //     if (i->empty())
-    //     {
-    //         i = response.erase(i);
-    //     }
-    //     else
-    //     {
-    //         ++i;
-    //     }
-    // }
-
     return response;
 }
 
 int main()
 {
     string str = "";
+    
+    // THE FOLLOWING ESSAY WAS USED WITH PERMISSION
     string test = "Nolan Morris\n \
 251103372\n \
 Professor Kathleen Fraser\n \
@@ -106,26 +96,16 @@ Winnefeld, James A, et al. Selected Aircraft Operational and Logistics Data. by 
 Leone, Dario. \"An In-Depth Analysis of how Serbs Were Able to Shoot Down An F-117 Stealth Fighter During Operation Allied Force\" The Aviation Geek Club, 26 March 2020, www.theaviationgeekclub.com/an-in-depth-analysis-of-how-serbs-were-able-to-shoot-down-an-f-117-stealth-fighter-during-operation-allied-force/\n \
 Operation Desert Storm: Evaluation of the Air War. United States General Accounting Office, 1996. www.govinfo.gov/content/pkg/GAOREPORTS-PEMD-96-10/pdf/GAOREPORTS-PEMD-96-10.pdf\n\
 Martin, Jerome V. Victory from Above: Air Power Theory and the Conduct of Operations Desert Shield and Desert Storm. Air University Press, 1994. www.apps.dtic.mil/sti/pdfs/ADA283460.pdf\n\n";
+    
     string fileOutput = "filename.txt";
     ofstream myFile(fileOutput);
-    for (int i = 0; i <= 860; i++)
-    {
-        str += "I pride myself and think of myself as a man of faith, as there's a drive into deep left field by Castellanos, it will be a home run. And so that'll make it a 4–0 ballgame."; // INPUT
-    }
 
     vector<string> vec;
     vector<string> output;
 
     vec = process(test);
 
-    cout << "Vec size: " << vec.size() << endl;
-
-    for (int i = 0; i < vec.size(); i++)
-    {
-        cout << i << ": " << vec[i] << endl;
-    }
-
-    vector<string> backup; // BACKUP THE ARRAY
+    vector<string> backup; 
     backup = vec;
 
     int splitIndex = 0;
@@ -139,22 +119,22 @@ Martin, Jerome V. Victory from Above: Air Power Theory and the Conduct of Operat
         {
             splitIndex = i + 1;
             break;
-        }
-    }
+        } // END OF IF STATEMENT
+    } // END OF FOR LOOP
 
     string chunk = "";
 
     for (int i = oldSplit; i < splitIndex; i++)
     {
         chunk = chunk + vec[i];
-    }
+    } // END OF FOR LOOP
 
     output.push_back(chunk);
 
     for (int i = 0; i < output.size(); i++)
     {
         myFile << output[i];
-    }
+    } // END OF FOR LOOP
 
     myFile.close();
 
